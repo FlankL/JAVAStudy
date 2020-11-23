@@ -6,5 +6,6 @@ package com.flank.javastudy.jdk8optional;
  */
 public class BeforeJava8 {
     public static void main(String[] args) {
+
     }
 }
