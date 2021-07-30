@@ -13,9 +13,7 @@ import java.util.concurrent.*;
  */
 public class CreateThread4 {
     public static void main(String[] args) {
-        /**
-         * main线程去获得创建线程的返回结果
-         */
+
 
         //1.创建可执行任务
         Runnable task = () -> System.out.println("hello world");

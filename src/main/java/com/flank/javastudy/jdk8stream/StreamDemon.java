@@ -2,11 +2,9 @@ package com.flank.javastudy.jdk8stream;
 
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -43,10 +41,10 @@ public class StreamDemon {
      */
     @Test
     public void testFilter(){
-//        Stream.iterate(0,n->n+1)
-//                .filter(n->n%2==0)
-//                .limit(10)
-//                .forEach(System.out::println);
+       Stream.iterate(0,n->n+1)
+               .filter(n->n%2==0)
+               .limit(10)
+               .forEach(System.out::println);
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 2, 4, 4);
         integerStream.distinct().skip(2).map(integer -> integer+"").forEach(n->{
             System.out.println(n);
@@ -87,6 +85,55 @@ public class StreamDemon {
         System.out.println("max = " + max);
 
 
+    }
+
+    @Test
+    public void tesetStream(){
+        List<String> list = new ArrayList<String>();
+        list.add("I am a boy");
+        list.add("I love the girl");
+        list.add("But the girl loves another girl");
+        list.stream().map(item->item.split(" ")).flatMap(Arrays::stream).forEach(System.out::println);
+    }
+
+    @Test
+    public void testCompare(){
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student("zhangsna", 10));
+        students.add(new Student("lisi", 13));
+        students.add(new Student("wangwu", 11));
+        // students.sort(new Comparator<Student>() {
+        //     @Override
+        //     public int compare(Student o1, Student o2) {
+        //         return 0;
+        //     }
+        // });
+        students.sort(Comparator.comparing(Student::getAge));
+    }
+
+    class feibo{
+        public int first;
+        public int second;
+
+        public feibo(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        @Override
+        public String toString() {
+            return "feibo{" +
+                    "first=" + first +
+                    ", second=" + second +
+                    '}';
+        }
+    }
+    @Test
+    public void testFeibo(){
+        Stream.iterate(new feibo(0,1),feibo ->
+             new feibo(feibo.second,feibo.first+ feibo.second))
+                .limit(20)
+                .forEach(feibo -> System.out.println("("+feibo.first+","+feibo.second+")"));
 
     }
 
