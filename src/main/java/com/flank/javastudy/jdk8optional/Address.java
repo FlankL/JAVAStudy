@@ -1,9 +1,7 @@
 package com.flank.javastudy.jdk8optional;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author flank
@@ -16,5 +14,10 @@ public class Address {
 
     public void hello() {
         System.out.println("hello");
+    }
+    public static void main(String[] args){
+        int[] file1 = {1, 2, 4};
+        int[] file2 = {1, 2, 4};
+
     }
 }
