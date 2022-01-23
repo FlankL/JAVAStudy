@@ -2,6 +2,7 @@ package com.flank.javastudy.jdk8optional;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Builder
 public class User {
     private String name;
-    private Address address;
-    private Optional<Address> optionalAdress;
+    private Adress adress;
+    private Optional<Adress> optionalAdress;
 }
 
